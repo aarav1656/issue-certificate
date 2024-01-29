@@ -1,33 +1,76 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3; 
-//Version of Solidity that the contract is written in
+//SPDX-License-Identifier:MIT
+pragma solidity 0.8.24;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol"; 
-//The ERC721.sol file contains the implementation of the ERC721 standard, which is used for non-fungible tokens (NFTs). 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"; 
-//It adds functionality for storing and retrieving token metadata URIs.
-import "@openzeppelin/contracts/utils/Counters.sol"; 
-//provides a library for managing counters.
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+// import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract NFTMinter is ERC721URIStorage { 
-    //This line defines a new contract called NFTMinter
-    using Counters for Counters.Counter; 
-    //Counters library to create a counter variable called _tokenIds
-    Counters.Counter private _tokenIds;
+contract NFTMinter is ERC721, Ownable {
+    using Counters for Counters.Counter;
+    using Strings for uint256;
 
-    constructor() ERC721("Probinar", "PRO") {} 
-    //constructor function of the NFTMinter contract. It is executed only once when the contract is deployed. 
 
-    function mintNFT(address recipient, string memory tokenURI) public returns (uint256) {
-    // recipient, which is the address that will receive the NFT, and tokenURI, which is the URI of the NFT's metadata. 
+    Counters.Counter _tokenIds;
+    address public admin;
+    address public Owner;
 
+    struct RenderToken{
+        uint256 id;
+        string uri;
+    }
+
+    mapping(uint256 => string)public _tokenURIs;
+    mapping(uint => bool)public isCertificateValid;
+    constructor(address _admin) ERC721("Probinar", "PRO"){
+        admin=_admin;
+        Owner=msg.sender;
+    }
+
+    modifier OnlyOwner(){
+        require(msg.sender==Owner,"Only admin can perform this function");
+        _;
+    }
+
+    function setTokenURI(uint tokenId, string memory _tokenURI) internal {
+        _tokenURIs[tokenId]=_tokenURI;
+    }
+
+    function mintNFT(address recepient , string memory uri) public returns(uint256){
+        require(msg.sender==admin,"only admin can Mint NFT Certification");
+        uint256 newId= _tokenIds.current();
+        _mint(recepient,newId);
         _tokenIds.increment();
-    //increments the _tokenIds counter, generating a new ID for the NFT.
-        uint256 newItemId = _tokenIds.current();
-    //mints a new NFT and assigns it to the recipient address with the newItemId
-        _mint(recipient, newItemId);
-        _setTokenURI(newItemId, tokenURI);
-    //sets the tokenURI of the newly minted NFT.
-        return newItemId;
+        setTokenURI(newId, uri);
+        isCertificateValid[newId]=true;
+        return newId;
+
+    }
+
+    function tokenURI(uint CertificationID) public view virtual override returns(string memory){
+        require(isCertificateValid[CertificationID],"Certification ID not exist");
+        return _tokenURIs[CertificationID];
+    }
+
+    function getAllToken() public view returns(RenderToken[] memory){
+        uint256 latestID = _tokenIds.current();
+        uint256 counter=0;
+        RenderToken[] memory res= new RenderToken[](latestID);
+        for(uint256 i=0;i<latestID;i++){
+            if(isCertificateValid[counter]){
+                string memory uri = tokenURI(counter);
+                res[counter] = RenderToken(counter, uri);
+            }
+            counter++;
+        }
+        return res;
+
+    }
+
+    
+
+    function changeAdmin(address _admin) external OnlyOwner returns(address) {
+        admin=_admin;
+        return admin;
     }
 }

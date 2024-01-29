@@ -21,6 +21,7 @@ function MintNFT() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [address, setAddress] = useState();
   const [status, setStatus] = useState("");
   const [ipfsLink, setIpfsLink] = useState("");
   const [imageStatus, setImageStatus] = useState("");
@@ -59,7 +60,7 @@ function MintNFT() {
       })
     )}`;
 
-    const transaction = await contract.mintNFT(signer.getAddress(), tokenURI);
+    const transaction = await contract.mintNFT(address, tokenURI);
     await transaction.wait();
     console.log("lol")
 
@@ -154,6 +155,13 @@ function MintNFT() {
             variant="filled"
             margin="normal"
             onChange={(e) => setDescription(e.target.value)}
+          />
+          <TextField
+            fullWidth
+            label="Address where to mint"
+            variant="filled"
+            margin="normal"
+            onChange={(e) => setAddress(e.target.value)}
           />
           <input
             type="file"

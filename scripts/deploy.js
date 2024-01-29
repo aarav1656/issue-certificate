@@ -2,9 +2,10 @@ const { ethers } = require("hardhat");
 // imports the ethers module from the Hardhat library,
 
 async function main() {
+  const adminAddress = "0xa3A11543c26BbF126d0a031e78e3F512A277a4d5";
   const NFTMinter = await ethers.getContractFactory("NFTMinter");
   //retrieves the contract factory for the NFTMinter contract. This factory is used to create instances of the contract.
-  const nftMinter = await NFTMinter.deploy();
+  const nftMinter = await NFTMinter.deploy(adminAddress);
   //deploys a new instance of the NFTMinter contract.
   await nftMinter.deployed();
   //waits for the deployment to complete and ensures that the contract is successfully deployed.

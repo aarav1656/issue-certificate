@@ -2,24 +2,24 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("dotenv").config();
 
-const { PRIVATE_KEY } = process.env;
+const PRIVATE_KEY =  
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 
 module.exports = {
-  defaultNetwork: "sphinx",
+  defaultNetwork: "mumbai",
   networks: {
     hardhat: {},
-    sphinx: {
-      url: "https://dapps.shardeum.org/",
-      chainId: 8081,
-      accounts: [`0x${PRIVATE_KEY}`],
+    mumbai: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      chainId: 80001,
+      accounts: [PRIVATE_KEY],
     },
   },
   solidity: {
-    version: "0.8.17",
+    version: "0.8.24",
     settings: {
       optimizer: {
         enabled: true,
