@@ -7,7 +7,7 @@ export async function connectWallet() {
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(
-    "0x392627cb1BB71A7eb06982b82Ed938e3B4fE3D8e", // Paste your Deployed NFT contract address
+    "0xA6Ff04eafbba9D59C438c9fb2f9FEc18fc804dB2", // Paste your Deployed NFT contract address
     NFTMinter.abi,
     signer
   );

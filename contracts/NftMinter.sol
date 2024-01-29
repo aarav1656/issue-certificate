@@ -15,7 +15,7 @@ contract NFTMinter is ERC721URIStorage {
     //Counters library to create a counter variable called _tokenIds
     Counters.Counter private _tokenIds;
 
-    constructor() ERC721("Certificate", "CNFT") {} 
+    constructor() ERC721("Probinar", "PRO") {} 
     //constructor function of the NFTMinter contract. It is executed only once when the contract is deployed. 
 
     function mintNFT(address recipient, string memory tokenURI) public returns (uint256) {
