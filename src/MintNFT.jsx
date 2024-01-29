@@ -261,7 +261,7 @@ function MintNFT() {
           transactionHistory.map((hash, index) => (
             <Box key={index} mt={1} textAlign="left">
               <Link
-                href={`https://explorer-dapps.shardeum.org/transaction/${hash}`}
+                href={`https://mumbai.polygonscan.com/tx/${hash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "#ee2e31" }}
