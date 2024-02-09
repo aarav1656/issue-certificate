@@ -704,7 +704,7 @@ contract PROBINAR is ERC721, Ownable {
         _tokenURIs[tokenId] = _tokenURI;
     }
 
-    function mint(address recepient, string memory uri)
+    function mintNFT(address recepient, string memory uri)
         public
         returns (uint256)
     {

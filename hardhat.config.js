@@ -9,12 +9,13 @@ const PRIVATE_KEY = "309a4ce128542c425c47825b6df6e912befb8eb26341c6a09c62237872e
  */
 
 module.exports = {
-  defaultNetwork: "mumbai",
+  defaultNetwork: "testnet",
   networks: {
     hardhat: {},
-    mumbai: {
-      url: "https://rpc-mumbai.maticvigil.com",
-      chainId: 80001,
+    testnet: {
+      url: "https://testnet-rpc.ultraproscan.io/",
+      chainId: 606626,
+      gasPrice: 20000000000,
       accounts: [PRIVATE_KEY],
     },
   },
