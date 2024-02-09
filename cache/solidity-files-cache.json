@@ -2,11 +2,11 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/aarav/Desktop/tut/certificate2/contracts/NftMinter.sol": {
-      "lastModificationDate": 1706519925299,
-      "contentHash": "fcd9df9ec75070b7ab54574751b6232f",
+      "lastModificationDate": 1707452305284,
+      "contentHash": "9b06f132823f6e1f61daac1c7fcbde23",
       "sourceName": "contracts/NftMinter.sol",
       "solcConfig": {
-        "version": "0.8.24",
+        "version": "0.8.0",
         "settings": {
           "optimizer": {
             "enabled": true,
@@ -28,16 +28,25 @@
           }
         }
       },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
-        "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
-      ],
+      "imports": [],
       "versionPragmas": [
-        "0.8.24"
+        "^0.8.0"
       ],
       "artifacts": [
-        "NFTMinter"
+        "Address",
+        "Context",
+        "Counters",
+        "ERC165",
+        "ERC721",
+        "ERC721URIStorage",
+        "IERC165",
+        "IERC721",
+        "IERC721Metadata",
+        "IERC721Receiver",
+        "Ownable",
+        "PROBINAR",
+        "ReentrancyGuard",
+        "Strings"
       ]
     },
     "/home/aarav/Desktop/tut/certificate2/node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol": {

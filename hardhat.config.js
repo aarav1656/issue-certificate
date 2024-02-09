@@ -2,7 +2,7 @@ require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 require("dotenv").config();
 
-const PRIVATE_KEY =  
+const PRIVATE_KEY = "309a4ce128542c425c47825b6df6e912befb8eb26341c6a09c62237872e9ada6"
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   solidity: {
-    version: "0.8.24",
+    version: "0.8.0",
     settings: {
       optimizer: {
         enabled: true,

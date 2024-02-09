@@ -2,19 +2,18 @@ const { ethers } = require("hardhat");
 // imports the ethers module from the Hardhat library,
 
 async function main() {
-  const adminAddress = "0xa3A11543c26BbF126d0a031e78e3F512A277a4d5";
-  const NFTMinter = await ethers.getContractFactory("NFTMinter");
-  //retrieves the contract factory for the NFTMinter contract. This factory is used to create instances of the contract.
-  const nftMinter = await NFTMinter.deploy(adminAddress);
-  //deploys a new instance of the NFTMinter contract.
-  await nftMinter.deployed();
-  //waits for the deployment to complete and ensures that the contract is successfully deployed.
-  console.log("NFTMinter deployed to:", nftMinter.address);
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  const PROBINAR = await ethers.getContractFactory("PROBINAR");
+  const probinar = await PROBINAR.deploy(deployer.address);
+
+  console.log("PROBINAR address:", probinar.address);
 }
-// It handles the asynchronous execution of the function and handles any errors that may occur.
+
 main()
   .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
+  .catch(error => {
+      console.error(error);
+      process.exit(1);
   });
