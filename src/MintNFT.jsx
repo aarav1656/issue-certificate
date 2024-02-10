@@ -269,7 +269,7 @@ function MintNFT() {
           transactionHistory.map((hash, index) => (
             <Box key={index} mt={1} textAlign="left">
               <Link
-                href={`https://mumbai.polygonscan.com/tx/${hash}`}
+                href={`https://testnet-explorer.ultraproscan.io/tx/${hash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "#ee2e31" }}
