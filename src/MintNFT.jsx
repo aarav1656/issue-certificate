@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connectWallet, connectMetaMask } from "./connectWallet";
 import { uploadToIPFS } from "./ipfsUploader";
 
-import NFTImage from "./images/tour.png";
+// import NFTImage from "./images/tour.png";
 
 import {
   TextField,
@@ -51,7 +51,7 @@ function MintNFT() {
 
     setStatus("Minting NFT...");
     setLoading(true);
-    const { signer, contract } = await connectWallet();
+    const { contract } = await connectWallet();
     const tokenURI = `data:application/json;base64,${btoa(
       JSON.stringify({
         name,
