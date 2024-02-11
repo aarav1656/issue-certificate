@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { connectWallet, connectMetaMask } from "./connectWallet";
 import { uploadToIPFS } from "./ipfsUploader";
-
-// import NFTImage from "./images/tour.png";
 
 import {
   TextField,
@@ -82,25 +80,16 @@ function MintNFT() {
         >
           Issue Cerificates as NFT
         </Typography>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSh0cyYL2vjZ19qZD68kjvx2LzsO-eOz2AFmLwwxDFxA&s"
-          alt="NFT Minter"
-          style={{
-            display: "block",
-            margin: "100px auto 0px auto",
-            maxWidth: "100%",
-          }}
-        />
+        
       </Box>
       <img src="images/bg-top.svg" alt="" className="bg-top" />
 
       <Box className="main">
         <Box className="left">
           <h1>
-            <span className="purple">Decentralization for everyone</span>{" "}
+            <span className="purple">Welcome To Probinar</span>{" "}
           </h1>
-          <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, r         </p>
+          
         </Box>
 
         <Box className="right">
@@ -138,7 +127,7 @@ function MintNFT() {
                   fontFamily: "Arial",
                 }}
               >
-                Wallet Balance: {walletBalance} Matic
+                Wallet Balance: {walletBalance} UPRO
               </Typography>
             </Box>
           )}
@@ -269,7 +258,7 @@ function MintNFT() {
           transactionHistory.map((hash, index) => (
             <Box key={index} mt={1} textAlign="left">
               <Link
-                href={`https://testnet-explorer.ultraproscan.io/tx/${hash}`}
+                href={`https://mumbai.polygonscan.com/tx/${hash}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "#ee2e31" }}
