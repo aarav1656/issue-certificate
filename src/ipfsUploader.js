@@ -1,8 +1,10 @@
 import axios from "axios";
+// require('dotenv').config();
 
 //Paste Your API's Key and Secret here
-const pinataApiKey = "11154bf7be1e39173cf5";
-const pinataApiSecret = "7a35cc5d76e19eb0aa7740fe7e3ca0ae811e772895666e2d9391de0806fcce23";
+const pinataApiKey = process.env.API_PINATA;
+const pinataApiSecret = process.env.LOL_SECRET;
+console.log(pinataApiKey)
 
 const pinataApiUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 
